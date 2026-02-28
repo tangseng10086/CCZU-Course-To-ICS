@@ -1,3 +1,0 @@
-selenim
-openpyxl
-icalendar
