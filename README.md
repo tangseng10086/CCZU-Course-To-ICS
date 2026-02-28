@@ -1,6 +1,6 @@
 # CCZU-Course-To-ICS
 
-本项目是专门为常州大学学生设计的基于python的课表工具。可以自动从教务系统抓取个人课表并将其转换为标准的.ics格式，方便导入iphone![展示](C:\Users\ASUS\Desktop\我的第一个github项目\展示.jpg)
+本项目是专门为常州大学学生设计的基于python的课表工具。可以自动从教务系统抓取个人课表并将其转换为标准的.ics格式，方便导入iphone![展示](展示.jpg)
 
 ## 功能亮点
 
