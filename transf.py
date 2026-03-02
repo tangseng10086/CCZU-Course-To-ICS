@@ -78,7 +78,7 @@ def create_day(week,j):
                     if week>=start_week1 and week<=end_week1:
                         a=create_course_event(con[0],con[1]+' '+con[4],con[2],start_dt,end_dt)
                         cal.add_component(a)
-            else:
+            elif len(con)==12:
                 con[4]=con[4].rstrip(',')
                 con[0+5]=con[0+5].lstrip('/<br/>')
                 con[4+5]=con[4+5].rstrip(',')
@@ -89,13 +89,34 @@ def create_day(week,j):
                     if week>=start_week2 and week<=end_week2:
                         a=create_course_event(con[0],con[1]+' '+con[3]+' '+con[4],con[2],start_dt,end_dt)
                         cal.add_component(a)
-                else:
+                elif con[3+5]=="双" and week%2==0:
                     week_range3=con[4+5].split('-')
                     start_week3=int(week_range3[0])
                     end_week3=int(week_range3[1])
                     if week>=start_week3 and week<=end_week3:
                         a=create_course_event(con[0+5],con[1+5]+' '+con[3+5]+' '+con[4+5],con[2+5],start_dt,end_dt)
                         cal.add_component(a)
+                else:
+                    week_range4=con[4].split("-")
+                    start_week4=int(week_range4[0])
+                    end_week4=int(week_range4[1])
+                    week_range5=con[4+5].split("-")
+                    start_week5=int(week_range5[0])
+                    end_week5=int(week_range5[1])
+                    if week>=start_week4 and week<=end_week4:
+                        a=create_course_event(con[0],con[1]+' '+con[3]+' '+con[4],con[2],start_dt,end_dt)
+                        cal.add_component(a)
+                    if week>=start_week5 and week<=end_week5:
+                        a=create_course_event(con[0+5],con[1+5]+' '+con[3+5]+' '+con[4+5],con[2+5],start_dt,end_dt)
+                        cal.add_component(a)
+            elif len(con)==3:
+                con[2]=con[2].rstrip(',')
+                week_range6=con[2].split('-')
+                start_week6=int(week_range6[0])
+                end_week6=int(week_range6[1])
+                if week>=start_week6 and week<=end_week6:
+                    a=create_course_event(con[0],con[2],con[1],start_dt,end_dt)
+                    cal.add_component(a)
             with open('mcl.ics','wb') as f:
                     f.write(cal.to_ical())
 for j in range(1,19):
